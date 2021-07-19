@@ -1,0 +1,12 @@
+.containerCard {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.paginationBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

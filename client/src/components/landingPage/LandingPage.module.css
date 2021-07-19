@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+.box1 {
+  width: 530px;
+  height: 625px;
+  background-image: url(./images/1.png);
+  left: 30%;
+  animation: anim 2s forwards, anim2 3s forwards 3s;
+}
+
+.box1:after {
+  content: '';
+  position: absolute;
+  width: 530px;
+  height: 625px;
+}

@@ -1,0 +1,77 @@
+.name {
+  color: blue;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.temperament {
+  color: blue;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.card {
+  height: 65vh;
+  flex: 1;
+  background-color: rgb(246, 194, 164);
+  border-radius: 1rem;
+  border: blue solid;
+  text-align: center;
+  padding: 1em 0;
+  position: relative;
+  margin: 10px;
+  /* max-width: 310px;
+    min-width: 310px;
+    min-height: 400px;
+    max-height: 400px; */
+}
+
+.card:hover {
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.856);
+}
+.image {
+  width: 60%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.content {
+  color: black;
+  margin-top: 10%;
+  font-size: 1.2em;
+}
+
+.button {
+  background-color: #3151d1;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 40px 10px;
+  position: relative;
+  margin-top: 3%;
+}
+
+.button:before,
+.button:after {
+  border: 0 solid transparent;
+  transition: all 0.3s;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 24px;
+}
+
+.button:before {
+  border-top: 2px solid #263059;
+  right: 0;
+  top: -4px;
+}
+
+.button:after {
+  border-bottom: 2px solid #263059;
+  bottom: -4px;
+  left: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  width: 100%;
+}

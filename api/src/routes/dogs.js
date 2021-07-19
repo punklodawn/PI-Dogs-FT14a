@@ -15,7 +15,8 @@ router.get('/dogs', async (req, res) => {
 
     let dogs = queryApi.data.map((obj) => {
       return {
-        image: obj.image,
+        id: obj.id,
+        image: obj.image.url,
         name: obj.name,
         temperament: obj.temperament,
       };
@@ -32,7 +33,8 @@ router.get('/dogs', async (req, res) => {
 
       let result = filtred.map((obj) => {
         return {
-          image: obj.image.url,
+          id: obj.id,
+          image: obj.image,
           name: obj.name,
           temperament: obj.temperament,
           temperaments: obj.temperaments,
@@ -60,11 +62,11 @@ router.get('/dogs/:id', async (req, res) => {
         console.log(queryAPI.data);
   
         const objeto = {
-          image: queryAPI.data.image,
+          image_id: 'https://cdn2.thedogapi.com/images/'+  queryAPI.data.reference_image_id + '.jpg',
           name: queryAPI.data.name,
           temperament: queryAPI.data.temperament,
-          height: queryAPI.data.height,
-          weight: queryAPI.data.weight,
+          height: queryAPI.data.height.metric,
+          weight: queryAPI.data.weight.metric,
           life_span: queryAPI.data.life_span,
         };
   
