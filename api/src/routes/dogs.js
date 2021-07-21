@@ -19,6 +19,7 @@ router.get('/dogs', async (req, res) => {
         image: obj.image.url,
         name: obj.name,
         temperament: obj.temperament,
+        weight: obj.weight.metric,
       };
     });
 
@@ -36,6 +37,7 @@ router.get('/dogs', async (req, res) => {
           id: obj.id,
           image: obj.image,
           name: obj.name,
+          weight: obj.weight.metric,
           temperament: obj.temperament,
           temperaments: obj.temperaments,
         };
@@ -62,7 +64,7 @@ router.get('/dogs/:id', async (req, res) => {
         console.log(queryAPI.data);
   
         const objeto = {
-          image_id: 'https://cdn2.thedogapi.com/images/'+  queryAPI.data.reference_image_id + '.jpg',
+          image: 'https://cdn2.thedogapi.com/images/'+queryAPI.data.reference_image_id+ '.jpg',
           name: queryAPI.data.name,
           temperament: queryAPI.data.temperament,
           height: queryAPI.data.height.metric,

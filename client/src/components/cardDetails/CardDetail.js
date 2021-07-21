@@ -18,10 +18,10 @@ export default function CardDetails(){
     return (
         <div className={style.containerCards}>
             <div className={style.card}>
+                
                 <img className={style.image}
-                src={breedDetails.image_id}
                 src={breedDetails.image}
-                alt='img-breed'></img>
+                alt='img-breedBD'></img>
 
                 <h1 className={style.name}>{breedDetails.name}</h1>
                 <p className={style.p}>
@@ -35,9 +35,6 @@ export default function CardDetails(){
                     <span className={style.span}> life_span : </span>{""}{breedDetails.life_span}
                 </p>
 
-                <p className={style.p}>
-                    <span className={style.span}> temperament : </span>{""}{breedDetails.temperament}
-                </p>
 
                 <div className={style.temperaments}>
                     <b>temperament: </b>
@@ -53,7 +50,9 @@ export default function CardDetails(){
 
                             ))
                         ):(
-                            <p className={style.p}> Not Have Temperament</p>
+                            <p className={style.p}>
+                            <span className={style.span}> temperament : </span>{""}{breedDetails.temperament}
+                            </p>
                         )}
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {getAddBreed, getHome} from '../../redux/actions/index'
+import { getHome} from '../../redux/actions/index'
 import style from './AddBreed.module.css'
 
 export default function AddRecipe ()  {
@@ -105,7 +105,7 @@ export default function AddRecipe ()  {
             max='104'
             placeholder='height'
             onChange={handleInputChange}
-            value={input.summary}
+            value={input.height}
             required
             >
             </input>
@@ -118,7 +118,7 @@ export default function AddRecipe ()  {
             max='110'
             placeholder='weight'
             onChange={handleInputChange}
-            value={input.summary}
+            value={input.weight}
             required
             >
             </input>
@@ -131,7 +131,7 @@ export default function AddRecipe ()  {
             max='20'
             placeholder='life_span'
             onChange={handleInputChange}
-            value={input.score}
+            value={input.life_span}
             required
             >
             </input>
@@ -141,7 +141,7 @@ export default function AddRecipe ()  {
             name='image'
             placeholder='image'
             onChange={handleInputChange}
-            value={input.instructions}
+            value={input.image}
             required
             >
             </input>

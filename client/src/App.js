@@ -6,6 +6,7 @@ import Navbar from './components/navBar/NavBar'
 import ContainerCard from './components/cards/container/Container'
 import CardDetails from './components/cardDetails/CardDetail'
 import AddBreed from './components/addBreed/AddBreed'
+// import Ordering from'./components/ordering/Ordering'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/dogs">
         <Navbar/>
         <ContainerCard/>
+        {/* <Ordering/> */}
       </Route>
 
       <Route  exact path="/dogs/:id">
