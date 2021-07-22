@@ -8,6 +8,7 @@ import{
     GET_BREEDS_ASC,
     GET_BREEDS_DESC,
     GET_HOME,
+    FILTER_BY_BDAPI,
 
 
 } from '../actions/TypesActions'
@@ -56,6 +57,13 @@ export function filterByTemperaments(payload) {
     }
     };
   
+
+export function filterByBDAPI(payload) {
+        return {
+          type: FILTER_BY_BDAPI,
+          payload: payload,
+        }
+    }
 
   export function getHome() {
     return {

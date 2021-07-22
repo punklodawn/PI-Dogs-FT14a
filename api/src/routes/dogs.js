@@ -20,6 +20,7 @@ router.get('/dogs', async (req, res) => {
         name: obj.name,
         temperament: obj.temperament,
         weight: obj.weight.metric,
+        mine: true,
       };
     });
 
@@ -40,6 +41,7 @@ router.get('/dogs', async (req, res) => {
           weight: obj.weight.metric,
           temperament: obj.temperament,
           temperaments: obj.temperaments,
+          mine: true,
         };
       });
 
@@ -70,6 +72,7 @@ router.get('/dogs/:id', async (req, res) => {
           height: queryAPI.data.height.metric,
           weight: queryAPI.data.weight.metric,
           life_span: queryAPI.data.life_span,
+          mine: true,
         };
   
         if (queryAPI) return res.json(objeto);

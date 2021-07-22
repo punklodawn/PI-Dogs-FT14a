@@ -17,6 +17,7 @@ router.post('/dog', async (req, res) => {
 			weight,
 			life_span,
 			image,
+			mine: false,
 		});
 		await newBreed.addTemperament(temperament);
 		res.json(newBreed);

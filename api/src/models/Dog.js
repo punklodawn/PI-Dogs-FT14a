@@ -33,6 +33,12 @@ module.exports = (sequelize) => {
 
     image: {
       type: DataTypes.STRING,
-    },
+    }, 
+    
+    mine: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+  }, 
   });
 };

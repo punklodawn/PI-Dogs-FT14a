@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../card/Card';
-import { getBreeds, ordering, filterByTemperaments, getTemperaments } from '../../../redux/actions/index';
+import { getBreeds, ordering, filterByTemperaments, getTemperaments, filterByBDAPI } from '../../../redux/actions/index';
 import { connect, useDispatch } from 'react-redux';
 
 import style from './Container.module.css';
@@ -9,31 +9,53 @@ function Container(props) {
 
   const [selectedTemp, setSelectedTemp] = useState('');
   const [arrayTemps, setArrayTemps] = useState([]);
-  const [showNoResult, setShowNoResult] = useState(false);
+
 
   //=============PAGINATION=============
-  const [numeroPagina, setPagina] = useState(1);
-  const grupo = 8;
-  const conteoFinal = numeroPagina * grupo;
-  const conteoInicial = conteoFinal - grupo;
-  const current = props.current.slice(conteoInicial, conteoFinal);
+
+  const [page, setPage] = useState(0);
+ 
+  const next_Page = () => {
+    if (props.current.length <= page + 8) {
+      setPage(page);
+    } else{ 
+      setPage(page + 8);
+    }
+  };
+  const prev_Page = () => {
+    if (page < 7) {
+      setPage(0);
+    } else {
+      setPage(page - 8);
+    }
+  };
+  const first_Page = () => {
+    setPage(0);
+  };
+
+  useEffect(() => {
+    first_Page();
+  }, []);
+
+  const current = props.current.slice(page, page + 8)
+
+
 
   useEffect(() => {
       props.getBreeds()
          // eslint-disable-next-line react-hooks/exhaustive-deps
-
   },[])
 
   useEffect(() => {
     props.getTemperaments();
        // eslint-disable-next-line react-hooks/exhaustive-deps
-
     }, []);
 
 
   //================ORDER================
   const [selectedOrd, setSelectedOrd] = useState('asc');
   const [selectedCat, setSelectedCat] = useState('name');
+  const [selectedBDAPI, setSelectedBDAPI] = useState('API');
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -43,23 +65,26 @@ function Container(props) {
       setSelectedOrd(e.target.value);
     }
   }
+
+  function handleChangeBDAPI(e) {
+      setSelectedBDAPI(e.target.value);
+
+  }
+
   function handlesubmit(e) {
     e.preventDefault();
     dispatch(ordering(selectedOrd, selectedCat));
   }
-
-
-  // const [temperament, setTemperament] = useState();
-
-  // const handleClick = (temp) => {
-  //   props.filterByTemperaments(temp);
-  //   setPagina(1);
-
-  // };
+  function handlesubmitBDAPI(e) {
+    e.preventDefault();
+    if(selectedBDAPI === 'ALL'){
+      dispatch(getBreeds())
+    }
+    dispatch(filterByBDAPI(selectedBDAPI));
+  }
 
   const handleClick = (e, empty) => {
     let filtered = [];
-    setShowNoResult(false);
 
     if (arrayTemps.length === 0) {
         dispatch(filterByTemperaments([]));
@@ -67,8 +92,8 @@ function Container(props) {
     }
 
     if (!empty) {
-        current.forEach((b) => {
-            let temps = b.temperament?.map(t => t.name); // ["curious", "active"]
+      current.forEach((b) => {
+            let temps = b.temperament?.map(t => t.name); 
             for (let i = 0; i < arrayTemps.length; i++) {
                 if (!temps.includes(arrayTemps[i])) {
                     return
@@ -78,7 +103,7 @@ function Container(props) {
         })
 
         if (filtered.length === 0) {
-            setShowNoResult(true);
+          console.log('no results');
         }
 
     } else {
@@ -86,7 +111,7 @@ function Container(props) {
         props.getBreeds()
     }
 
-    dispatch(filterByTemperaments(filtered)); //[{}, {}] --> action a redux
+    dispatch(filterByTemperaments(filtered)); 
 }
 
   const handleChangeTemp = (e) => {
@@ -95,7 +120,7 @@ function Container(props) {
     if (e.target.value) {
         if (!arrayTemps.includes(e.target.value)) {
             setArrayTemps(
-                [...arrayTemps, e.target.value] // ["Alert", "Curious"]
+                [...arrayTemps, e.target.value] 
             )
 
             dispatch(filterByTemperaments(e.target.value));
@@ -104,44 +129,15 @@ function Container(props) {
 
 };
 
-
-
-
-  return (
+return (
     <div>
-      <div className={style.paginationBtns}>
-        <button className='button' onClick={() => setPagina(numeroPagina - 1)}>
-          Anterior
-        </button>
-        <button className='button'>{numeroPagina}</button>
-        <button className='button' onClick={() => setPagina(numeroPagina + 1)}>
-          Siguiente
-        </button>
-      </div>
-
-      {/* <div id="dietTypes">
-        {current.length ? <label>Temmperament: </label> : null}
-        {current.length
-          ? props.temperaments.map((temp, i) => (
-              <button
-                className="dietBtn"
-                key={`${temp}${i}`}
-                onClick={() => handleClick(temp)}
-              >
-                {temp.toUpperCase()}
-              </button>
-            ))
-          : null}
-      </div> */}
-
-
 <h1>Filter</h1>
 
 <div className='filter-container'>
     <select onChange={handleChangeTemp} name="temperaments" value={selectedTemp}  >
         <option value=''>Select temperaments</option>
         {
-           props.temperaments.map((t, index) => (
+           props.temperaments?.map((t, index) => (
 
                 <option value={t} key={t + index}>{t}</option>
             ))
@@ -153,7 +149,6 @@ function Container(props) {
                  arrayTemps.map((t) => (
                   <div key={t}>
                   {t}
-                  {/* <button  onClick={() => deleteTemp(t)}><i className="cont"></i>X</button> */}
                   </div>
                 ))
                   
@@ -179,6 +174,31 @@ function Container(props) {
           <button type='submit'>order</button>
         </div>
       </form>
+
+
+      <form onSubmit={handlesubmitBDAPI}>
+        <h1>Ordering Breed BD/API</h1>
+        <div>
+          <select onChange={handleChangeBDAPI} value={selectedBDAPI} name='filDBAPI'>
+          <option value='ALL'>ALL</option>
+            <option value='BD'>BD</option>
+            <option value='API'>API</option>
+            
+          </select>
+
+          <button type='submit'>order</button>
+        </div>
+      </form>
+
+      <div className={style.container}>
+        <button className={style.button} onClick={prev_Page}>
+          Back
+        </button>
+
+        <button className={style.button} onClick={next_Page}>
+          Next
+        </button>
+      </div>
 
       <div className={style.containerCard}>
         {current.map((current, index) => (

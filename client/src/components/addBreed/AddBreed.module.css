@@ -1,0 +1,132 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid white;
+  align-items: center;
+  border-radius: 20px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  border-top: 3px solid white;
+  animation: bounce 1.5s infinite;
+  height: 100hv;
+  width: 320px;
+
+  /* 
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height:500px;
+    padding: 20px;
+    width:320px; */
+}
+::-webkit-input-placeholder {
+  font-size: 1rem;
+}
+
+.tittle,
+.secondaryTittle {
+  /* color: #eee;
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 30px; */
+
+  display: block;
+  font-family: sans-serif;
+  margin: 10px auto 5px;
+  width: 300px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'sans-serif';
+}
+
+.tittle {
+  padding-bottom: 30px;
+  color: white;
+}
+.secondaryTittle {
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-family: 'sans-serif';
+}
+.submit {
+  background-color: #3151d1;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  margin-top: 10%;
+}
+
+.submit:before,
+.submit:after {
+  border: 0 solid transparent;
+  transition: all 0.3s;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 24px;
+}
+
+.submit:before {
+  border-top: 2px solid #263059;
+  right: 0;
+  top: -4px;
+}
+
+.submit:after {
+  border-bottom: 2px solid #263059;
+  bottom: -4px;
+  left: 0;
+}
+
+.submit:hover:before,
+.submit:hover:after {
+  width: 100%;
+}
+
+.select {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+}
+
+.formEntry,
+.formEntry2 {
+  display: block;
+  margin: 5px auto;
+  min-width: 300px;
+  padding: 5px;
+  border-radius: 2px;
+  outline: none;
+  border: 0.5px solid grey;
+  transition: all 0.5s ease 0s;
+  font-family: 'Arvo';
+  background-color: #f7f7f7;
+  background-image: linear-gradient(to top, #f7f7f7, #f7f7f7 33%);
+  font-size: 12px;
+}
+
+.formEntry2 {
+  min-width: 310px;
+}
