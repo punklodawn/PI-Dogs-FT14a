@@ -18,7 +18,6 @@ function App() {
       <Route exact path="/dogs">
         <Navbar/>
         <ContainerCard/>
-        {/* <Ordering/> */}
       </Route>
 
       <Route  exact path="/dogs/:id">

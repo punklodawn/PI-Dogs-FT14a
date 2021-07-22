@@ -62,7 +62,7 @@ export default function CardDetails(){
                     </button>
                 </Link>
 
-                <Link to='/recipe/addbreed'>
+                <Link to='/dog/addbreed'>
                     <input className={style.button} type='button' value='ADD BREED'>
                     </input>
                 </Link>

@@ -10,7 +10,7 @@
   box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
   border-radius: 5px;
   max-width: 600px;
-  border: white solid;
+  border: blue solid;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -18,14 +18,14 @@
   left: 0;
   right: 0;
   margin-bottom: 40px;
-  border-top: 5px solid white;
+  border-top: 5px solid blue;
   animation: bounce 1.5s infinite;
   height: fit-content;
 }
 
 .card {
   width: 100%;
-  background-color: rgb(33, 33, 36);
+  background-color: rgb(246, 194, 164);
   text-align: center;
   border-radius: 5px;
   height: fit-content;
@@ -36,14 +36,14 @@
 }
 
 .name {
-  color: white;
+  color: blue;
   font-size: 3rem;
   margin-top: 0.5rem;
   margin-bottom: 5px;
 }
 
 .p {
-  color: white;
+  color: blue;
   font-size: 1rem;
   margin: 0px 0px 0px 20px;
   text-align: left;
@@ -51,7 +51,7 @@
 }
 
 .p2 {
-  color: white;
+  color: blue;
   font-size: 1rem;
   margin: 0px 0px 0px 20px;
   padding: 0px 0px 0px 20px;
@@ -60,37 +60,44 @@
 }
 
 .span {
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
-.activities {
-  color: white;
-  font-size: 1.8rem;
-  margin: 20px 0px;
-}
-
-.touristActivitiesContainer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.buttom {
-  width: 100px;
-  background-color: #f4511e;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  font-size: 10px;
-  font-family: 'Arvo';
-  margin: 2rem 0.5rem;
+.button {
+  background-color: #3151d1;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
   outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  margin-top: 10%;
 }
 
-.buttom:hover {
-  box-shadow: 15px 15px 15px 5px rgb(15, 15, 15);
-  transform: translateY(-3px);
-  width: 100px;
-  border-top: 5px solid #f4511e;
-  border-radius: 0%;
+.button:before,
+.button:after {
+  border: 0 solid transparent;
+  transition: all 0.3s;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 24px;
+}
+
+.button:before {
+  border-top: 2px solid #263059;
+  right: 0;
+  top: -4px;
+}
+
+.button:after {
+  border-bottom: 2px solid #263059;
+  bottom: -4px;
+  left: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  width: 100%;
 }

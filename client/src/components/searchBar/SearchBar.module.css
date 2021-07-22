@@ -1,1 +1,63 @@
+.SearchButton {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 5px;
+  width: 100%;
+}
 
+.inputSerach {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.inputSerach::placeholder {
+  color: transparent;
+}
+.inputSerach:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.inputSerach:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, black, gray);
+  border-image-slice: 1;
+}
+/* reset input */
+.inputSerach :required,
+:invalid {
+  box-shadow: none;
+}
+.label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: gray;
+}
+.form__label :focus {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+}
+
+.form__label:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}

@@ -23,13 +23,13 @@ export default function SearchBar() {
           className={style.inputSerach}
           type='text'
           value={name}
+          placeholder="SEARCH"
           onChange={(e) => handleChange(e)}
           required
         ></input>
 
-      <button type='submit' className={style.searchSubmitButton}>
-        Search
-      </button>
+        <label for="name" class={style.label}>Search Name</label>
+
     </form>
   );
 }

@@ -5,8 +5,89 @@
   justify-content: center;
   align-items: center;
 }
-.paginationBtns {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.box {
+  position: static;
+  /* top: 20%;
+  left: 50%; */
+}
+
+.select {
+  background-color: #3151d1;
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box::before {
+  content: '\f13a';
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.select option {
+  padding: 30px;
+}
+.buttonClear {
+  background-color: #3151d1;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 40px 10px;
+  position: relative;
+  margin-top: 1%;
+}
+
+.buttonClear:before,
+.buttonClear:after {
+  border: 0 solid transparent;
+  transition: all 0.3s;
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 24px;
+}
+
+.buttonClear:before {
+  border-top: 2px solid #263059;
+  right: 0;
+  top: -4px;
+}
+
+.buttonClear:after {
+  border-bottom: 2px solid #263059;
+  bottom: -4px;
+  left: 0;
+}
+
+.buttonClear:hover:before,
+.buttonClear:hover:after {
+  width: 100%;
 }

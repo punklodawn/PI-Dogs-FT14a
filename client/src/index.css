@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: #1e242a;
+  background-image: url(../src/components/landingPage/images/benefits-having-dog.jpg);
+  background-position: initial;
+  background-repeat: initial;
 }
 
 code {

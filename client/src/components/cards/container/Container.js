@@ -36,8 +36,20 @@ function Container(props) {
   useEffect(() => {
     first_Page();
   }, []);
+  
 
-  const current = props.current.slice(page, page + 8)
+const current = props.current.slice(page, page + 8)
+
+  let button = false;
+  let button1 = false;
+
+  if(page > 0 && page < 168 ){
+    button = true;
+  }
+  console.log(page);
+  if(page == 168 ){
+    button1 = true;
+  }
 
 
 
@@ -129,12 +141,14 @@ function Container(props) {
 
 };
 
+
+
 return (
     <div>
 <h1>Filter</h1>
 
-<div className='filter-container'>
-    <select onChange={handleChangeTemp} name="temperaments" value={selectedTemp}  >
+<div className={style.box}>
+    <select className={style.select} onChange={handleChangeTemp} name="temperaments" value={selectedTemp}  >
         <option value=''>Select temperaments</option>
         {
            props.temperaments?.map((t, index) => (
@@ -143,7 +157,8 @@ return (
             ))
         }
     </select>
-    <div className='temp-container'>
+    
+    <div className={style.containerTemp}>
       <div>
             {
                  arrayTemps.map((t) => (
@@ -155,23 +170,23 @@ return (
             }
         </div>
     </div>
-    <button className='filter-button' onClick={(e) => handleClick(e, 'empty')}>Clear filters</button>
+    <button className={style.buttonClear}onClick={(e) => handleClick(e, 'empty')}>Clear filters</button>
 </div>
 
 
       <form onSubmit={handlesubmit}>
         <h1>Ordering</h1>
         <div>
-          <select onChange={handleChange} value={selectedCat} name='order'>
+          <select className={style.select} onChange={handleChange} value={selectedCat} name='order'>
             <option value='name'>Name</option>
             <option value='weight'>Weight</option>
           </select>
 
-          <select onChange={handleChange} name='by' value={selectedOrd}>
+          <select  className={style.select}onChange={handleChange} name='by' value={selectedOrd}>
             <option value='asc'>Ascending</option>
             <option value='desc'>Descending</option>
           </select>
-          <button type='submit'>order</button>
+          <button className={style.buttonClear} type='submit'>order</button>
         </div>
       </form>
 
@@ -179,18 +194,18 @@ return (
       <form onSubmit={handlesubmitBDAPI}>
         <h1>Ordering Breed BD/API</h1>
         <div>
-          <select onChange={handleChangeBDAPI} value={selectedBDAPI} name='filDBAPI'>
+          <select className={style.select} onChange={handleChangeBDAPI} value={selectedBDAPI} name='filDBAPI'>
           <option value='ALL'>ALL</option>
             <option value='BD'>BD</option>
             <option value='API'>API</option>
             
           </select>
 
-          <button type='submit'>order</button>
+          <button className={style.buttonClear} type='submit'>order</button>
         </div>
       </form>
 
-      <div className={style.container}>
+      {button ? <div className={style.container}>
         <button className={style.button} onClick={prev_Page}>
           Back
         </button>
@@ -198,8 +213,17 @@ return (
         <button className={style.button} onClick={next_Page}>
           Next
         </button>
-      </div>
+      </div> : button1?
+              <button className={style.button} onClick={prev_Page}>
+              Back
+            </button>
+            :
+      <div><button className={style.button} onClick={next_Page}>
+          Next
+        </button></div>
 
+        
+}
       <div className={style.containerCard}>
         {current.map((current, index) => (
           <Card
